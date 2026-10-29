@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="robots" content="noindex,nofollow">
-<meta name="googlebot" content="noindex,nofollow">
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex,nofollow">
+<meta name="googlebot" content="noindex,nofollow">
 <meta name="color-scheme" content="light dark" />
 <link rel="icon" href="data:," />
 <title>KBI ERTW Oxford — Tentative Itinerary</title>
@@ -172,6 +172,15 @@
   footer h3{font-size:1rem;color:var(--ink);margin-bottom:.4rem}
   footer ul{margin:.3rem 0;padding-left:1.1rem}
 </style>
+<style>
+#kbi-gate{position:fixed;inset:0;z-index:2147483647;background:#101c2e;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif}
+#kbi-gate .card{background:#fff;border-radius:12px;padding:36px 40px;max-width:380px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+#kbi-gate h1{font-size:20px;margin:0 0 8px;color:#101c2e}
+#kbi-gate p{font-size:14px;color:#555;margin:0 0 20px}
+#kbi-gate input{width:100%;box-sizing:border-box;padding:12px;font-size:16px;border:1px solid #bbb;border-radius:8px;margin-bottom:12px}
+#kbi-gate button{width:100%;padding:12px;font-size:16px;background:#101c2e;color:#fff;border:0;border-radius:8px;cursor:pointer}
+#kbi-gate .err{color:#b00020;font-size:13px;min-height:18px;margin-top:10px}
+</style>
 </head>
 <body>
 
@@ -211,30 +220,35 @@
   <section id="map-section">
     <div class="sec-head">
       <h2>The week on a map</h2>
-      <p>All Oxford stops sit within a 20-minute walk of Oxford Edge, except the Summertown pair (a longer walk or short bus). The Google map layers the 13 stops by day; the list beside it keeps every stop with a walking-directions link.</p>
+      <p>All Oxford stops sit within a 20-minute walk of Oxford Edge, except the Summertown pair (a longer walk or short bus). The Google map layers the 18 stops by day; the list beside it keeps every stop with a walking-directions link.</p>
     </div>
     <div class="map-grid">
       <div class="map-box">
         <iframe class="gmap" src="https://www.google.com/maps/d/embed?mid=1b_38YQKRP8Vup-TB95oo4Ckze_GPSHg&amp;ehbc=2E312F" title="KBI ERTW Oxford — Google My Maps" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
         <div class="legend">
-          <span>13 pins in 4 layers: Base &amp; ETO West · Tue — Parks Road: Quantum &amp; Cyber · Wed — Data &amp; AI · Thu — Fintech &amp; North Oxford</span>
+          <span>18 pins in 4 layers: Base &amp; ETO West · Tue — Parks Road: Quantum &amp; Cyber · Wed — Data &amp; AI · Thu — Fintech &amp; North Oxford</span>
           <a class="open-gmaps" href="https://www.google.com/maps/d/viewer?mid=1b_38YQKRP8Vup-TB95oo4Ckze_GPSHg" target="_blank" rel="noopener">Open in Google Maps</a>
         </div>
       </div>
       <ul class="plist">
         <li><div class="nm"><span class="num">1</span><span>Oxford Edge (base &amp; ETO venue)</span></div><div class="meta">Base · Mon &amp; Fri–Sun · start of every day · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75829,-1.26087&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
-        <li><div class="nm"><span class="num">2</span><span>Clarendon Laboratory — Physics</span></div><div class="meta">Tue morning · IQCOL quantum groups · ~7 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75968,-1.25632&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
-        <li><div class="nm"><span class="num">3</span><span>Cyber Security Oxford / ACE-CSR — Computer Science</span></div><div class="meta">Tue morning · IBCOL / cyber · ~6 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75955,-1.25783&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
-        <li><div class="nm"><span class="num">4</span><span>Oxford e-Research Centre</span></div><div class="meta">Tue afternoon · IDSOL data science · ~5 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75969,-1.25853&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
-        <li><div class="nm"><span class="num">5</span><span>Reuben College</span></div><div class="meta">Tue afternoon · IDSOL · AI &amp; ML college · ~7 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75773,-1.25597&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
-        <li><div class="nm"><span class="num">6</span><span>Oxford Martin School + AI Governance Initiative</span></div><div class="meta">Wed morning · IDSOL · public lectures · ~9 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75484,-1.25418&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
-        <li><div class="nm"><span class="num">7</span><span>Schwarzman Centre — OII + Institute for Ethics in AI</span></div><div class="meta">Wed morning · IDSOL · ~5 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.76012,-1.26129&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
-        <li><div class="nm"><span class="num">8</span><span>Oxford Science Enterprises</span></div><div class="meta">Wed afternoon · spinout funding talk · ~6 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.76101,-1.26179&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
-        <li><div class="nm"><span class="num">9</span><span>Oxford-Man Institute</span></div><div class="meta">Thu morning · IDSOL + IBCOL fintech · ~10 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.76206,-1.26982&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
-        <li><div class="nm"><span class="num">10</span><span>Mind Foundry — Summertown</span></div><div class="meta">Thu afternoon · IDSOL · ~25 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.77675,-1.26433&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
-        <li><div class="nm"><span class="num">11</span><span>PQShield — Summertown</span></div><div class="meta">Thu afternoon · IQCOL ↔ IBCOL · ~35–40 min walk / short bus · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.77891,-1.26585&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
-        <li><div class="nm"><span class="num">12</span><span>Covered Market (lunch)</span></div><div class="meta">Tue lunch · ~10 min walk · no booking · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75299,-1.25691&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
-        <li><div class="nm"><span class="num">13</span><span>Gloucester Green Market (lunch)</span></div><div class="meta">Wed lunch · Wed–Sat only · ~7 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75453,-1.26146&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">2</span><span>Christ Church College</span></div><div class="meta">Mon afternoon · ~14:30 entry · group booking · ~15 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75024,-1.25650&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">3</span><span>Ashmolean Museum</span></div><div class="meta">Mon late morning · recommended · free entry · ~5 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75542,-1.26018&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">4</span><span>Clarendon Laboratory — Physics</span></div><div class="meta">Tue morning · IQCOL quantum groups · ~7 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75968,-1.25632&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">5</span><span>Cyber Security Oxford / ACE-CSR — Computer Science</span></div><div class="meta">Tue morning · IBCOL / cyber · ~6 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75955,-1.25783&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">6</span><span>Oxford University Museum of Natural History</span></div><div class="meta">Tue · recommended drop-in · free entry · in the Parks Road cluster · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75903,-1.25644&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">7</span><span>Oxford e-Research Centre</span></div><div class="meta">Tue afternoon · IDSOL data science · ~5 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75969,-1.25853&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">8</span><span>Reuben College</span></div><div class="meta">Tue afternoon · IDSOL · AI &amp; ML college · ~7 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75773,-1.25597&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">9</span><span>Oxford Martin School + AI Governance Initiative</span></div><div class="meta">Wed morning · IDSOL · public lectures · ~9 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75484,-1.25418&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">10</span><span>Schwarzman Centre — OII + Institute for Ethics in AI</span></div><div class="meta">Wed morning · IDSOL · ~5 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.76012,-1.26129&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">11</span><span>History of Science Museum</span></div><div class="meta">Wed midday · 12:00–13:00 · recommended · free entry · ~5 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75423,-1.25508&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">12</span><span>New College</span></div><div class="meta">Wed early afternoon · ~13:30 · latest possible slot · pre-book · ~10 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75508,-1.25151&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">13</span><span>Oxford Science Enterprises</span></div><div class="meta">Wed afternoon · spinout funding talk · movable · ~6 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.76101,-1.26179&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">14</span><span>Oxford-Man Institute</span></div><div class="meta">Thu morning · IDSOL + IBCOL fintech · ~10 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.76206,-1.26982&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">15</span><span>Mind Foundry — Summertown</span></div><div class="meta">Thu afternoon · IDSOL · ~25 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.77675,-1.26433&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">16</span><span>PQShield — Summertown</span></div><div class="meta">Thu afternoon · IQCOL ↔ IBCOL · ~35–40 min walk / short bus · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.77891,-1.26585&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">17</span><span>Covered Market (lunch)</span></div><div class="meta">Tue lunch · ~10 min walk · no booking · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75299,-1.25691&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
+        <li><div class="nm"><span class="num">18</span><span>Gloucester Green Market (lunch)</span></div><div class="meta">Wed lunch · Wed–Sat only · ~7 min walk · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.75453,-1.26146&amp;travelmode=walking" target="_blank" rel="noopener">Directions</a></div></li>
       </ul>
     </div>
   </section>
@@ -249,15 +263,29 @@
     <article class="day">
       <div class="day-head">
         <div class="date">Mon 8 Nov</div>
-        <h3>Arrival &amp; orientation</h3>
-        <span class="theme">Base day · Oxford Edge</span>
+        <h3>Arrival, orientation &amp; Christ Church</h3>
+        <span class="theme">Oxford Edge · Christ Church</span>
       </div>
       <div class="day-body">
         <div class="block">
-          <div class="when">Afternoon</div>
+          <div class="when">Morning</div>
           <div class="stop">
             <span class="nm">Welcome &amp; orientation at Oxford Edge</span><span class="chip walk">Base</span>
             <p>37 St Giles — the university's entrepreneurship centre, with a hardware lab and a track record of hosting student groups and societies. Week briefing, team introductions, walking-tour ground rules.</p>
+          </div>
+        </div>
+        <div class="block">
+          <div class="when">Late morning — recommended</div>
+          <div class="stop">
+            <span class="nm">Ashmolean Museum</span><span class="chip">Recommended · free entry</span>
+            <p>Beaumont Street, ~5 min from Oxford Edge — the world's first university museum, and an easy late-morning visit after orientation, before Christ Church at 14:30. Free entry, open every day 10:00–17:00. Groups of 10+ must pre-book a self-guided group visit at least 2 weeks ahead: <a href="mailto:groups@ashmus.ox.ac.uk">groups@ashmus.ox.ac.uk</a>.</p>
+          </div>
+        </div>
+        <div class="block">
+          <div class="when">Afternoon · ~14:30 entry</div>
+          <div class="stop">
+            <span class="nm">Christ Church College</span><span class="chip">Group booking to request</span>
+            <p>Christ Church, the Cathedral and a Meadow walk — Oxford's iconic first impression, ~15 min south down St Aldate's. Timed for ~14:30 entry because the Great Hall is closed 12:00–14:00 for student lunch. Group entry pre-booked via <a href="mailto:groups@chch.ox.ac.uk">groups@chch.ox.ac.uk</a> — £18.50 pp group rate.</p>
           </div>
         </div>
         <div class="block">
@@ -289,6 +317,10 @@
           <div class="stop">
             <span class="nm">Cyber Security Oxford / ACE-CSR — Dept of Computer Science</span><span class="tags"><span class="tag ibcol">IBCOL</span></span><span class="chip">To request</span>
             <p>An NCSC/EPSRC Academic Centre of Excellence in Cyber Security Research, a few steps from the Clarendon. The strongest academic cyber talk host on the route, and the natural pairing for an OxCyS co-organized session.</p>
+          </div>
+          <div class="stop">
+            <span class="nm">Oxford University Museum of Natural History</span><span class="chip">Recommended · free entry</span>
+            <p>Parks Road, inside the day's cluster — a free drop-in between the scheduled visits: the dodo, the dinosaurs and the neo-Gothic court. Open daily 10:00–17:00. Groups of 10+ must book in advance (max 55 per booking — our ~50 fits one booking); a £3 pp admin fee may apply if we're classed as a commercial group — to be confirmed by enquiry.</p>
           </div>
         </div>
         <div class="block">
@@ -341,10 +373,24 @@
           </div>
         </div>
         <div class="block">
-          <div class="when">Afternoon</div>
+          <div class="when">Midday · 12:00–13:00 — recommended</div>
           <div class="stop">
-            <span class="nm">Oxford Science Enterprises (OSE)</span><span class="chip">To request</span>
-            <p>46 Woodstock Road — the investor behind Oxford's spinout pipeline (~£850m raised, 125+ companies). A “how spinouts get funded” talk rather than a lab tour; useful context for teams thinking about what happens after the Olympiad.</p>
+            <span class="nm">History of Science Museum</span><span class="chip">Recommended · free entry</span>
+            <p>Broad Street — Einstein's blackboard in the world's oldest purpose-built museum building, a ~5 min walk from New College, so it slots in right before the 13:30 visit. Free entry, open Tue–Sun 12:00–17:00 (closed Mondays). Groups must book ahead via <a href="mailto:learning@hsm.ox.ac.uk">learning@hsm.ox.ac.uk</a>; only 2 groups of 15 may be inside at a time, so the group staggers in sub-groups.</p>
+          </div>
+        </div>
+        <div class="block">
+          <div class="when">Early afternoon · ~13:30 — latest possible slot</div>
+          <div class="stop">
+            <span class="nm">New College</span><span class="chip">Pre-book · sub-groups of max 20</span>
+            <p>Holywell Street, ~10 min east of the morning cluster — cloisters and gardens as the early-afternoon visit. <strong>Not a late-afternoon visit:</strong> New College's November opening is 11:00–15:00 only (last entry 14:30, closed Mondays), so ~13:30 is the latest feasible slot. £11 pp student rate; the group splits into sub-groups of max 20; pre-book via <a href="mailto:tourism@new.ox.ac.uk">tourism@new.ox.ac.uk</a>.</p>
+          </div>
+        </div>
+        <div class="block">
+          <div class="when">Afternoon — after New College, if timings allow</div>
+          <div class="stop">
+            <span class="nm">Oxford Science Enterprises (OSE)</span><span class="chip">To request · movable</span>
+            <p>46 Woodstock Road — the investor behind Oxford's spinout pipeline (~£850m raised, 125+ companies). A “how spinouts get funded” talk rather than a lab tour; useful context for teams thinking about what happens after the Olympiad. Slotted after New College if timings allow — otherwise movable to another afternoon.</p>
           </div>
         </div>
       </div>
@@ -521,6 +567,46 @@
             <div class="todo-main">
               <div class="todo-title">Oxford-Man Institute of Quantitative Finance</div>
               <p class="todo-note">Ask for a quant finance / blockchain economics &amp; DeFi talk for Thursday morning.</p>
+              <span class="todo-deadline">Outreach sent by Fri 20 Nov 2026</span>
+            </div>
+          </li>
+          <li>
+            <span class="todo-box" aria-hidden="true"></span>
+            <div class="todo-main">
+              <div class="todo-title">Christ Church — group booking enquiry</div>
+              <p class="todo-note">Group booking enquiry to <a href="mailto:groups@chch.ox.ac.uk">groups@chch.ox.ac.uk</a> for Mon 8 Nov 2027 ~14:30, ~50 people, £18.50 pp group rate; confirm 2027 group booking window and date closures.</p>
+              <span class="todo-deadline">Outreach sent by Fri 20 Nov 2026</span>
+            </div>
+          </li>
+          <li>
+            <span class="todo-box" aria-hidden="true"></span>
+            <div class="todo-main">
+              <div class="todo-title">New College — group pre-booking</div>
+              <p class="todo-note">Group pre-booking via <a href="mailto:tourism@new.ox.ac.uk">tourism@new.ox.ac.uk</a> for Wed 10 Nov 2027 ~13:30, ~50 people in sub-groups of max 20, £11 pp student rate; check planned closures.</p>
+              <span class="todo-deadline">Outreach sent by Fri 20 Nov 2026</span>
+            </div>
+          </li>
+          <li>
+            <span class="todo-box" aria-hidden="true"></span>
+            <div class="todo-main">
+              <div class="todo-title">Ashmolean Museum — group visit booking for Mon 8 Nov 2027</div>
+              <p class="todo-note">Book the self-guided group visit for Mon 8 Nov 2027 late morning via <a href="mailto:groups@ashmus.ox.ac.uk">groups@ashmus.ox.ac.uk</a> — groups of 10+ must book at least 2 weeks ahead, so book early. Free entry.</p>
+              <span class="todo-deadline">Outreach sent by Fri 20 Nov 2026</span>
+            </div>
+          </li>
+          <li>
+            <span class="todo-box" aria-hidden="true"></span>
+            <div class="todo-main">
+              <div class="todo-title">Museum of Natural History — group booking for Tue 9 Nov 2027</div>
+              <p class="todo-note">Book the group visit for Tue 9 Nov 2027 (groups of 10+ must book in advance; max 55 per booking, so ~50 fits one booking) — and ask whether the £3 pp commercial-group admin fee applies to us. Free entry otherwise.</p>
+              <span class="todo-deadline">Outreach sent by Fri 20 Nov 2026</span>
+            </div>
+          </li>
+          <li>
+            <span class="todo-box" aria-hidden="true"></span>
+            <div class="todo-main">
+              <div class="todo-title">History of Science Museum — group booking for Wed 10 Nov 2027, 12:00</div>
+              <p class="todo-note">Book the group visit for Wed 10 Nov 2027 at 12:00 via <a href="mailto:learning@hsm.ox.ac.uk">learning@hsm.ox.ac.uk</a> — only 2 groups of 15 may be inside at a time, so plan staggered sub-groups of 15. Free entry.</p>
               <span class="todo-deadline">Outreach sent by Fri 20 Nov 2026</span>
             </div>
           </li>
@@ -771,5 +857,30 @@
   </div>
 </footer>
 
+<div id="kbi-gate" role="dialog" aria-label="Password required">
+<div class="card">
+<h1>KBI ERTW 2027 Oxford</h1>
+<p>This planning document is password-protected. Please enter the password to continue.</p>
+<form id="kbi-gate-form">
+<input type="password" id="kbi-gate-input" placeholder="Password" autocomplete="current-password" autofocus>
+<button type="submit">Unlock</button>
+<div class="err" id="kbi-gate-err"></div>
+</form>
+</div>
+</div>
+<script>
+(function(){
+var H="2ba0ee862409d0c5db0194d450f263378d74446220e77798970bd7283a13dae5";
+try{ if(sessionStorage.getItem("kbiGateOk")===H){var g=document.getElementById("kbi-gate"); if(g) g.style.display="none"; return;} }catch(e){}
+async function sha256(t){var b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("");}
+document.getElementById("kbi-gate-form").addEventListener("submit",async function(ev){
+ev.preventDefault();
+var v=document.getElementById("kbi-gate-input").value;
+var h=await sha256(v);
+if(h===H){ try{sessionStorage.setItem("kbiGateOk",H);}catch(e){} document.getElementById("kbi-gate").style.display="none"; }
+else{ document.getElementById("kbi-gate-err").textContent="Incorrect password — please try again."; }
+});
+})();
+</script>
 </body>
 </html>
