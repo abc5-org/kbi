@@ -1,0 +1,1262 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>ERTW'27 Oxford — Organizing Committee: Roles &amp; Responsibilities</title>
+    <style>
+      :root {
+        --bg: #f7f5f1;
+        --surface: #ffffff;
+        --surface-2: #efece5;
+        --ink: #1c2430;
+        --ink-soft: #47525f;
+        --line: #d8d2c6;
+        --line-strong: #b9b09c;
+        --navy: #16324f;
+        --navy-ink: #ffffff;
+        --gold: #9a7b2d;
+        --gold-soft: #f3ead3;
+        --accent: #16324f;
+        --danger: #8c2f2f;
+        --danger-soft: #f6e3e0;
+        --ok: #2e5d3a;
+        --shadow: 0 1px 3px rgba(28, 36, 48, .12), 0 6px 18px rgba(28, 36, 48, .06);
+        --radius: 10px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #14181d;
+          --surface: #1e242c;
+          --surface-2: #262d36;
+          --ink: #e8e6e0;
+          --ink-soft: #a9b2bd;
+          --line: #39424d;
+          --line-strong: #57626e;
+          --navy: #7fa8cf;
+          --navy-ink: #10161d;
+          --gold: #c9a44e;
+          --gold-soft: #33301f;
+          --accent: #7fa8cf;
+          --danger: #e08a7d;
+          --danger-soft: #3a2622;
+          --ok: #8fc79b;
+          --shadow: 0 1px 3px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.25);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+      }
+      .sans { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+      main { max-width: 1180px; margin: 0 auto; padding: 28px 20px 72px; }
+
+      header.page-head { border-bottom: 3px double var(--line-strong); padding-bottom: 18px; margin-bottom: 20px; }
+      header.page-head .org { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin: 0 0 8px; }
+      h1 { font-size: clamp(26px, 4.4vw, 40px); line-height: 1.15; margin: 0 0 8px; font-weight: 700; }
+      .context-line { color: var(--ink-soft); font-size: 16.5px; margin: 0; max-width: 62ch; }
+
+      .status-banner {
+        margin: 18px 0 26px; padding: 12px 16px;
+        border: 1px solid var(--gold); background: var(--gold-soft);
+        border-radius: var(--radius);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14.5px;
+        display: flex; gap: 10px; align-items: flex-start;
+      }
+      .status-banner strong { overflow-wrap: break-word; }
+
+      h2.section-title {
+        font-size: 23px; margin: 44px 0 6px; padding-bottom: 6px;
+        border-bottom: 2px solid var(--navy);
+      }
+      .section-intro { color: var(--ink-soft); margin: 0 0 16px; max-width: 74ch; }
+
+      /* ---------- Org chart ---------- */
+      .chart-toolbar {
+        display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+        margin: 14px 0 12px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .chart-toolbar .label { font-size: 13px; color: var(--ink-soft); margin-right: 2px; }
+      .btn {
+        appearance: none; cursor: pointer;
+        border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink);
+        font: inherit; font-size: 13.5px; padding: 6px 13px; border-radius: 999px;
+      }
+      .btn:hover { border-color: var(--navy); }
+      .btn[aria-pressed="true"] { background: var(--navy); color: var(--navy-ink); border-color: var(--navy); }
+      .btn:focus-visible, .node:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+      .chart-scroll { overflow-x: auto; padding-bottom: 6px; }
+      .chart {
+        position: relative; min-width: 860px;
+        padding: 10px 6px 26px;
+      }
+      .chart svg.wires { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+      .chart svg.wires path { fill: none; stroke: var(--line-strong); stroke-width: 1.6; }
+      .chart svg.wires path.dashed { stroke-dasharray: 6 5; stroke: var(--danger); }
+      .chart svg.wires path.firewall { stroke-dasharray: 3 4; stroke: var(--gold); stroke-width: 2; }
+      .chart svg.wires path.lit { stroke: var(--gold); stroke-width: 2.6; }
+      .chart svg.wires path.lit.dashed { stroke: var(--danger); }
+
+      .tier { position: relative; z-index: 1; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+      .tier + .tier { margin-top: 44px; }
+      .tier-label {
+        position: relative; z-index: 1; text-align: center;
+        width: fit-content; max-width: 100%;
+        margin: 26px auto 10px; padding: 0 10px;
+        background: var(--bg);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft);
+      }
+      .tier-label:first-child { margin-top: 4px; }
+
+      .group-box {
+        position: relative; z-index: 1;
+        border: 1.5px solid var(--navy); border-radius: 14px;
+        padding: 30px 14px 14px; margin: 0 auto; max-width: 1060px;
+        background: color-mix(in srgb, var(--surface) 88%, transparent);
+      }
+      .group-box > .group-title {
+        position: absolute; top: -11px; left: 16px;
+        background: var(--bg); padding: 0 8px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--navy);
+      }
+      .group-box.advisory { border-style: dashed; border-color: var(--line-strong); }
+      .group-box.advisory > .group-title { color: var(--ink-soft); }
+      .group-box .tier { margin-top: 0; }
+      .group-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+      .node {
+        position: relative; z-index: 1;
+        width: 218px; max-width: 100%;
+        background: var(--surface); border: 1.5px solid var(--line-strong);
+        border-radius: var(--radius); box-shadow: var(--shadow);
+        padding: 11px 13px 10px; cursor: pointer; text-align: left;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .node:hover { border-color: var(--navy); }
+      .node .n-title { font-size: 14.5px; font-weight: 700; line-height: 1.3; display: block; }
+      .node .n-sub { font-size: 12px; color: var(--ink-soft); display: block; margin-top: 3px; line-height: 1.35; }
+      .node .n-tag {
+        display: inline-block; margin-top: 7px; font-size: 10.5px; font-weight: 700;
+        letter-spacing: .07em; text-transform: uppercase;
+        padding: 2px 7px; border-radius: 999px;
+        background: var(--surface-2); color: var(--ink-soft); border: 1px solid var(--line);
+      }
+      .node.context-node { background: var(--surface-2); border-style: solid; width: 340px; text-align: center; }
+      .node.seat-chair { border-color: var(--navy); border-width: 2px; }
+      .node.vacant { border-color: var(--danger); border-style: dashed; }
+      .node.vacant .n-tag { background: var(--danger-soft); color: var(--danger); border-color: var(--danger); }
+      .node.advisory-node { border-style: dashed; box-shadow: none; }
+      .node.lit { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-soft), var(--shadow); }
+      .node.active { border-color: var(--gold); border-width: 2px; background: var(--gold-soft); }
+      .node.dim { opacity: .28; }
+      .node.hidden-node { display: none; }
+
+      .legend {
+        display: flex; flex-wrap: wrap; gap: 16px; margin-top: 14px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 12.5px; color: var(--ink-soft);
+      }
+      .legend span { display: inline-flex; align-items: center; gap: 7px; }
+      .legend .sw { width: 30px; height: 0; border-top: 2px solid var(--line-strong); display: inline-block; }
+      .legend .sw.dash { border-top: 2px dashed var(--danger); }
+      .legend .sw.fire { border-top: 3px dotted var(--gold); }
+
+      .firewall-note {
+        margin-top: 16px; border: 2px dashed var(--gold); border-radius: var(--radius);
+        padding: 11px 15px; background: var(--gold-soft);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px;
+      }
+      .bypass-note {
+        margin-top: 10px; border: 1.5px dashed var(--danger); border-radius: var(--radius);
+        padding: 11px 15px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px;
+      }
+
+      /* Detail panel */
+      .detail-panel {
+        margin-top: 18px; background: var(--surface); border: 1.5px solid var(--gold);
+        border-radius: 12px; box-shadow: var(--shadow); padding: 18px 20px;
+      }
+      .detail-panel h3 { margin: 0 0 2px; font-size: 20px; }
+      .detail-panel .dp-meta { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 12.5px; color: var(--gold); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin: 0 0 10px; }
+      .detail-panel p { margin: 0 0 10px; }
+      .detail-panel ul { margin: 4px 0 10px; padding-left: 20px; }
+      .detail-panel li { margin-bottom: 3px; }
+      .detail-panel .dp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 26px; }
+      .detail-panel .dp-grid h4 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin: 8px 0 4px; }
+      .detail-panel a { color: var(--navy); }
+      @media (max-width: 640px) { .detail-panel .dp-grid { grid-template-columns: 1fr; } }
+
+      /* ---------- Decisions box ---------- */
+      .decisions {
+        background: var(--surface); border: 2px solid var(--navy); border-radius: 12px;
+        padding: 20px 22px; box-shadow: var(--shadow);
+      }
+      .decisions h2 { margin: 0 0 4px; font-size: 21px; }
+      .decisions .d-date { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 12.5px; color: var(--ink-soft); margin: 0 0 14px; }
+      .decisions ol { margin: 0; padding-left: 22px; }
+      .decisions li { margin-bottom: 13px; }
+      .decisions li:last-child { margin-bottom: 0; }
+      .decisions .d-head { font-weight: 700; }
+      .tbd {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 700;
+        letter-spacing: .05em; color: var(--danger); border: 1px solid var(--danger);
+        border-radius: 4px; padding: 1px 5px; white-space: nowrap; vertical-align: 1px;
+      }
+      .limits-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 15.5px; }
+      .limits-table th, .limits-table td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; }
+      .limits-table th { background: var(--surface-2); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 13px; }
+      .limits-table td.amt { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 700; }
+
+      /* ---------- Role cards ---------- */
+      .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 16px; }
+      .role-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 18px 20px; box-shadow: var(--shadow); scroll-margin-top: 16px;
+      }
+      .role-card.wide { grid-column: 1 / -1; }
+      .role-card h3 { margin: 0 0 2px; font-size: 19px; line-height: 1.25; }
+      .role-card .rc-office { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin: 0 0 10px; }
+      .role-card h4 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin: 13px 0 4px; }
+      .role-card p { margin: 0 0 6px; }
+      .role-card ul { margin: 0; padding-left: 19px; }
+      .role-card li { margin-bottom: 3px; }
+      .role-card .rc-foot { border-top: 1px solid var(--line); margin-top: 13px; padding-top: 9px; font-size: 14.5px; color: var(--ink-soft); }
+      .role-card.from-chart { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-soft), var(--shadow); }
+
+      /* ---------- Working rules ---------- */
+      .rules { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; box-shadow: var(--shadow); }
+      .rules ul { margin: 0; padding-left: 20px; }
+      .rules li { margin-bottom: 9px; }
+      .cadence-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 15.5px; }
+      .cadence-table th, .cadence-table td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; }
+      .cadence-table th { background: var(--surface-2); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 13px; }
+
+      footer.page-foot { margin-top: 48px; border-top: 1px solid var(--line); padding-top: 14px; color: var(--ink-soft); font-size: 14px; }
+
+      @media (max-width: 700px) {
+        body { font-size: 16px; }
+        main { padding: 20px 14px 56px; }
+        .chart { min-width: 0; }
+        .node { width: 100%; }
+        .node.context-node { width: 100%; }
+        .group-box { padding: 26px 10px 12px; }
+        .tier + .tier { margin-top: 30px; }
+        .card-grid { grid-template-columns: 1fr; }
+        .limits-table td.amt { white-space: normal; }
+        .limits-table { font-size: 13.5px; }
+        .limits-table th, .limits-table td { padding: 5px 6px; overflow-wrap: break-word; }
+        .status-banner { flex-wrap: wrap; }
+      }
+      @media print {
+        body { background: #fff; font-size: 12pt; }
+        .chart-toolbar, .chart svg.wires { display: none; }
+        .chart { min-width: 0; }
+        .node, .role-card, .decisions, .rules, .detail-panel { box-shadow: none; break-inside: avoid; }
+        .node.dim { opacity: 1; }
+      }
+    </style>
+  <meta name="robots" content="noindex,nofollow">
+<meta name="googlebot" content="noindex,nofollow">
+<style>
+#kbi-gate{position:fixed;inset:0;z-index:2147483647;background:#101c2e;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif}
+#kbi-gate .card{background:#fff;border-radius:12px;padding:36px 40px;max-width:380px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+#kbi-gate h1{font-size:20px;margin:0 0 8px;color:#101c2e}
+#kbi-gate p{font-size:14px;color:#555;margin:0 0 20px}
+#kbi-gate input{width:100%;box-sizing:border-box;padding:12px;font-size:16px;border:1px solid #bbb;border-radius:8px;margin-bottom:12px}
+#kbi-gate button{width:100%;padding:12px;font-size:16px;background:#101c2e;color:#fff;border:0;border-radius:8px;cursor:pointer}
+#kbi-gate .err{color:#b00020;font-size:13px;min-height:18px;margin-top:10px}
+</style>
+</head>
+  <body>
+    <main>
+      <header class="page-head">
+        <p class="org">Königsberger Bridges Institute · KBI</p>
+        <h1>ERTW'27 Oxford — Organizing Committee: Roles &amp; Responsibilities</h1>
+        <p class="context-line">KBI Emerging Research and Technology Week, Oxford, Monday 8 – Sunday 14 November 2027, incorporating ETO West 2027 for the qualifying project teams of IBCOL, IDSOL and IQCOL.</p>
+      </header>
+
+      <div class="status-banner" role="note">
+        <strong>Status:</strong>
+        <span>Proposed structure — roles are defined by office only; <strong>no individuals have been appointed to any role yet</strong>. Items still open are marked <span class="tbd">TO BE DECIDED</span>.</span>
+      </div>
+
+      <!-- ================= 1. ORG CHART ================= -->
+      <h2 class="section-title" style="margin-top:8px;">1 · Organization Chart</h2>
+      <p class="section-intro">Select any box to highlight its reporting line and read a summary of the role. Use the filters to isolate one layer of the structure.</p>
+
+      <div class="chart-toolbar" role="group" aria-label="Chart controls">
+        <span class="label">Show:</span>
+        <button class="btn" type="button" data-filter="all" aria-pressed="true">All layers</button>
+        <button class="btn" type="button" data-filter="steering" aria-pressed="false">Steering</button>
+        <button class="btn" type="button" data-filter="delivery" aria-pressed="false">Delivery</button>
+        <button class="btn" type="button" data-filter="advisory" aria-pressed="false">Advisory</button>
+        <span class="label" style="margin-left:10px;">Workstreams:</span>
+        <button class="btn" type="button" id="wsToggle" aria-expanded="true">Collapse</button>
+        <button class="btn" type="button" id="resetBtn">Reset view</button>
+      </div>
+
+      <div class="chart-scroll">
+        <div class="chart" id="chart">
+          <svg class="wires" id="wires" aria-hidden="true"></svg>
+
+          <p class="tier-label">Oversight — context above the committee</p>
+          <div class="tier">
+            <button class="node context-node" type="button" id="n-board" data-layer="oversight" data-card="card-steering">
+              <span class="n-title">KBI Board of Directors / Governance Council</span>
+              <span class="n-sub">Ratifies reserved matters: budget envelope, safeguarding policy, anything above £1,000, and matters touching KBI's name or adjudication outcomes.</span>
+              <span class="n-tag">Oversight · not part of the committee</span>
+            </button>
+          </div>
+
+          <p class="tier-label">Decision layer — 7 voting seats, held by office</p>
+          <div class="group-box" id="steeringBox">
+            <span class="group-title">ERTW Steering Committee</span>
+            <div class="group-row">
+              <button class="node seat-chair" type="button" id="n-chair" data-layer="steering" data-card="card-chair">
+                <span class="n-title">Chair</span>
+                <span class="n-sub">Chairs the Steering Committee; owns reserved matters, final escalation, and the safeguarding bypass endpoint.</span>
+                <span class="n-tag">Voting seat 1 of 7</span>
+              </button>
+              <button class="node vacant" type="button" id="n-director" data-layer="steering delivery-head" data-card="card-director">
+                <span class="n-title">ERTW Director / Vice-Chair</span>
+                <span class="n-sub">Single accountable day-to-day operator; heads the Delivery Team.</span>
+                <span class="n-tag">Vacant — to be appointed</span>
+              </button>
+              <button class="node" type="button" id="n-k1" data-layer="steering" data-card="card-k1">
+                <span class="n-title">Strategy &amp; Risk</span>
+                <span class="n-sub">Milestones, risk register, East/West alignment, gate reviews.</span>
+                <span class="n-tag">K1 office · Voting seat</span>
+              </button>
+              <button class="node" type="button" id="n-k2" data-layer="steering" data-card="card-k2">
+                <span class="n-title">Finance, Legal &amp; Contracts</span>
+                <span class="n-sub">Budget control, procurement, insurance; routes all contracts to the MTÜ for signature.</span>
+                <span class="n-tag">K2 office · Voting seat</span>
+              </button>
+              <button class="node" type="button" id="n-k3" data-layer="steering" data-card="card-k3">
+                <span class="n-title">Communications &amp; Community</span>
+                <span class="n-sub">Participant and host communications, announcements, community relations.</span>
+                <span class="n-tag">K3 office · Voting seat</span>
+              </button>
+              <button class="node" type="button" id="n-k5" data-layer="steering" data-card="card-k5">
+                <span class="n-title">Programme &amp; Adjudication Integrity</span>
+                <span class="n-sub">ETO rules, judging panels, results integrity and appeals. Supported by the K4 office.</span>
+                <span class="n-tag">K5 office · Voting seat</span>
+              </button>
+              <button class="node" type="button" id="n-k6" data-layer="steering" data-card="card-k6">
+                <span class="n-title">Partnerships &amp; Hosts</span>
+                <span class="n-sub">Host institutions, venue, partner events and sponsors.</span>
+                <span class="n-tag">K6 office · Voting seat</span>
+              </button>
+            </div>
+          </div>
+
+          <p class="tier-label">Delivery layer — 8 workstreams, each led by a Lead with a Deputy, reporting to the ERTW Director</p>
+          <div class="tier" id="wsTier">
+            <button class="node" type="button" id="n-ws1" data-layer="delivery" data-card="card-ws1">
+              <span class="n-title">1 · Programme &amp; Site Visits</span>
+              <span class="n-sub">Visit schedule and host session briefs across the week.</span>
+              <span class="n-tag">Workstream · Lead + Deputy</span>
+            </button>
+            <button class="node" type="button" id="n-ws2" data-layer="delivery" data-card="card-ws2">
+              <span class="n-title">2 · ETO Competition Operations</span>
+              <span class="n-sub">Entries, exhibition and pitch logistics, judges' operations — inside the integrity firewall.</span>
+              <span class="n-tag">Workstream · Lead + Deputy</span>
+            </button>
+            <button class="node" type="button" id="n-ws3" data-layer="delivery" data-card="card-ws3">
+              <span class="n-title">3 · Oxford Logistics</span>
+              <span class="n-sub">Venue operations, accommodation, catering, local transport, accessibility.</span>
+              <span class="n-tag">Workstream · Lead + Deputy</span>
+            </button>
+            <button class="node" type="button" id="n-ws4" data-layer="delivery" data-card="card-ws4">
+              <span class="n-title">4 · Participant Care &amp; Safeguarding</span>
+              <span class="n-sub">Safeguarding Lead and deputy; welfare, conduct, incident response. Dashed line = escalation bypass to the Chair.</span>
+              <span class="n-tag">Workstream · Lead + Deputy</span>
+            </button>
+            <button class="node" type="button" id="n-ws5" data-layer="delivery" data-card="card-ws5">
+              <span class="n-title">5 · Partnerships &amp; Sponsorship</span>
+              <span class="n-sub">Sponsor and partner pipeline under the K6 seat — no contact with adjudication on the merits.</span>
+              <span class="n-tag">Workstream · Lead + Deputy</span>
+            </button>
+            <button class="node" type="button" id="n-ws6" data-layer="delivery" data-card="card-ws6">
+              <span class="n-title">6 · Finance &amp; Administration</span>
+              <span class="n-sub">Payments processing, receipts and budget tracking; execution follows MTÜ signature.</span>
+              <span class="n-tag">Workstream · Lead + Deputy</span>
+            </button>
+            <button class="node" type="button" id="n-ws7" data-layer="delivery" data-card="card-ws7">
+              <span class="n-title">7 · Communications &amp; Content</span>
+              <span class="n-sub">Event pages and artefacts, photography consent, press.</span>
+              <span class="n-tag">Workstream · Lead + Deputy</span>
+            </button>
+            <button class="node" type="button" id="n-ws8" data-layer="delivery" data-card="card-ws8">
+              <span class="n-title">8 · Society &amp; Volunteer Liaison</span>
+              <span class="n-sub">Liaison with Oxford student societies and volunteer rostering.</span>
+              <span class="n-tag">Workstream · Lead + Deputy</span>
+            </button>
+          </div>
+
+          <p class="tier-label">Advisory layer — non-voting</p>
+          <div class="group-box advisory" id="advisoryBox">
+            <span class="group-title">Advisory Circle</span>
+            <div class="group-row">
+              <button class="node advisory-node" type="button" id="n-adv1" data-layer="advisory" data-card="card-advisory">
+                <span class="n-title">Oxford Host Institutions &amp; Venue Contacts</span>
+                <span class="n-sub">Advice from the institutions and venues hosting sessions during the week.</span>
+                <span class="n-tag">Non-voting</span>
+              </button>
+              <button class="node advisory-node" type="button" id="n-adv2" data-layer="advisory" data-card="card-advisory">
+                <span class="n-title">Oxford Student Societies</span>
+                <span class="n-sub">OxCyS, OxAI and the Oxford Blockchain Society — none confirmed as co-organizer at this stage.</span>
+                <span class="n-tag">Non-voting · unconfirmed</span>
+              </button>
+              <button class="node advisory-node" type="button" id="n-adv3" data-layer="advisory" data-card="card-advisory">
+                <span class="n-title">KBI Expert Council Nominees</span>
+                <span class="n-sub">Subject-matter experts nominated by the KBI Expert Councils as advisers or adjudicators.</span>
+                <span class="n-tag">Non-voting</span>
+              </button>
+              <button class="node advisory-node" type="button" id="n-adv4" data-layer="advisory" data-card="card-advisory">
+                <span class="n-title">ETO East Counterpart</span>
+                <span class="n-sub">The Eastern Conference counterpart, for alignment between ETO East and ETO West.</span>
+                <span class="n-tag">Non-voting</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend" aria-hidden="true">
+        <span><i class="sw"></i> Reporting line</span>
+        <span><i class="sw dash"></i> Safeguarding escalation bypass (Participant Care → Chair, bypassing the Director)</span>
+        <span><i class="sw fire"></i> Adjudication firewall</span>
+      </div>
+
+      <div class="firewall-note"><strong>Adjudication firewall:</strong> no sponsor or host influence on judging, results or appeals. The Programme &amp; Adjudication Integrity seat (K5) and ETO Competition Operations sit on one side of this line; Partnerships &amp; Sponsorship sits on the other.</div>
+      <div class="bypass-note"><strong>Safeguarding bypass:</strong> the Safeguarding Lead may escalate directly to the Steering Committee Chair at any time, bypassing the ERTW Director. This route exists so that no concern about a participant's welfare ever waits on the person running the event.</div>
+
+      <div class="detail-panel" id="detailPanel" aria-live="polite">
+        <p class="dp-meta">Role summary</p>
+        <h3 id="dpTitle">Select a box in the chart</h3>
+        <p id="dpPurpose">Every box above is clickable. Selecting one highlights its reporting line through the structure and summarises the role here — its purpose, its principal responsibilities, and the limits of its authority. The full descriptions follow in Section 3.</p>
+        <div class="dp-grid">
+          <div>
+            <h4>Key responsibilities</h4>
+            <ul id="dpResp"><li>—</li></ul>
+          </div>
+          <div>
+            <h4>Authority &amp; limits</h4>
+            <p id="dpAuth">—</p>
+            <h4>Reports to</h4>
+            <p id="dpReports">—</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 2. DECISIONS ================= -->
+      <h2 class="section-title">2 · Decisions Recorded</h2>
+      <p class="section-intro">The following decisions frame the proposed structure. Everything not covered by a decision below remains a proposal open to amendment.</p>
+
+      <section class="decisions" aria-label="Decisions recorded 30 October 2026">
+        <h2>Decisions</h2>
+        <p class="d-date">Recorded 30 October 2026</p>
+        <ol>
+          <li>
+            <span class="d-head">ERTW Director — <span class="tbd">TO BE DECIDED</span></span><br />
+            The appointment of the ERTW Director will be decided soon. The office is vacant in the meantime, and the structure below is written so that it holds regardless of who is appointed: the Director's authority comes from the office, not the person.
+          </li>
+          <li>
+            <span class="d-head">Contracts are signed by the MTÜ.</span><br />
+            All ERTW contracts are signed by the MTÜ (Königsberger Brückeninstitut MTÜ), KBI's Estonian parent entity — regardless of which office negotiated them or which approval level authorised the spend. No member of this committee signs contracts in their own right. Payment and transaction arrangements are <span class="tbd">TO BE DECIDED</span> at a later date.
+          </li>
+          <li>
+            <span class="d-head">Clarification — whose votes are in question.</span><br />
+            The open voting question concerns <strong>this Organizing Committee only</strong>: whether Oxford student societies would ever hold voting seats on it. It does <strong>not</strong> concern the KBI Expert Councils — separate subject-matter-expert networks, which may nominate advisers or adjudicators but hold no vote here — nor KBI's Governance Council or Board of Directors. Current position: the societies sit in the Advisory Circle, <strong>non-voting</strong>.
+          </li>
+          <li>
+            <span class="d-head">Interim spending authority (GBP).</span><br />
+            Until KBI's general approval brackets are settled, the following interim limits apply. Approval authorises the spend; it does not sign anything — contracts are executed only by the MTÜ under Decision 2.
+            <table class="limits-table">
+              <thead>
+                <tr><th scope="col">Approval level</th><th scope="col">May approve, per commitment</th><th scope="col">Notes</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Workstream Lead</td><td class="amt">up to £100</td><td>Within the workstream's agreed budget lines.</td></tr>
+                <tr><td>ERTW Director</td><td class="amt">up to £500</td><td>Across workstreams; reported to the Steering Committee.</td></tr>
+                <tr><td>Steering Committee</td><td class="amt">up to £1,000</td><td>By minuted decision, within the approved budget envelope.</td></tr>
+                <tr><td>Board of Directors / Governance Council</td><td class="amt">above £1,000</td><td>Escalation level; also ratifies reserved matters.</td></tr>
+              </tbody>
+            </table>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ================= 3. ROLE DESCRIPTIONS ================= -->
+      <h2 class="section-title">3 · Roles &amp; Responsibilities</h2>
+      <p class="section-intro">One card per body and role. Spending figures refer to the interim authority in Decision 4; no card confers contract-signing power, which rests with the MTÜ alone.</p>
+
+      <div class="card-grid">
+        <article class="role-card wide" id="card-steering">
+          <h3>The Steering Committee (as a body)</h3>
+          <p class="rc-office">Decision layer · 7 voting seats, held by office</p>
+          <h4>Purpose</h4>
+          <p>The committee's decision-making body. It sets direction, holds the budget envelope, and reserves to itself — with Board ratification where required — the decisions that carry legal, financial, safeguarding or reputational weight.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Approve the event budget envelope, the programme shape, and the venue and accommodation strategy.</li>
+            <li>Decide reserved matters: major contracts, the safeguarding policy, sponsor exclusivity, and anything touching adjudication outcomes or KBI's name and intellectual property.</li>
+            <li>Run the four gate reviews with the Advisory Circle (December 2026, March 2027, September 2027, October 2027).</li>
+            <li>Appoint workstream Leads and Deputies, on the ERTW Director's recommendation.</li>
+            <li>Approve spending up to £1,000 per commitment; escalate anything above to the Board / Governance Council.</li>
+            <li>Keep a written decision log, updated within 24 hours of every decision.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>Decides by vote — one person, one vote; quorum is five of seven, and must include the Finance, Legal &amp; Contracts seat for any money or contract decision. The committee authorises; it does not sign. All contracts are executed by the MTÜ.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> KBI Board of Directors / Governance Council, on reserved matters. <strong>Cadence:</strong> fortnightly until December 2026; monthly January–June 2027; fortnightly July–September 2027; weekly October–November 2027; daily during the event week.</p>
+        </article>
+
+        <article class="role-card" id="card-chair">
+          <h3>Chair</h3>
+          <p class="rc-office">Steering seat 1 of 7</p>
+          <h4>Purpose</h4>
+          <p>Leads the Steering Committee and is its point of final accountability to the Board — deliberately distinct from the day-to-day operator.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Chair Steering Committee meetings; set agendas with the ERTW Director.</li>
+            <li>Own reserved matters and bring them to the Board / Governance Council for ratification.</li>
+            <li>Act as the final escalation point for deadlocks and cross-workstream disputes.</li>
+            <li>Serve as the endpoint of the safeguarding escalation bypass.</li>
+            <li>Represent the committee to the Board and, where required, externally.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>Casting responsibility for the committee's process and escalations; no unilateral spending authority beyond the Steering Committee's collective £1,000 limit, and no contract signature (MTÜ only).</p>
+          <p class="rc-foot"><strong>Reports to:</strong> Board of Directors / Governance Council. <strong>Cadence:</strong> chairs every Steering meeting; available for safeguarding escalation at all times.</p>
+        </article>
+
+        <article class="role-card" id="card-director">
+          <h3>ERTW Director / Vice-Chair</h3>
+          <p class="rc-office">Steering seat 2 of 7 · Vacant — appointment <span class="tbd">TO BE DECIDED</span></p>
+          <h4>Purpose</h4>
+          <p>The single accountable day-to-day operator of ERTW'27 Oxford. Everything in the delivery layer runs through this office; if a task has no owner, it belongs to the Director until assigned.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Own the master plan, milestones and critical path from appointment to closing ceremony.</li>
+            <li>Coordinate the eight workstreams; run the weekly delivery meeting.</li>
+            <li>Maintain the decision log and ensure every Steering decision is recorded within 24 hours.</li>
+            <li>Recommend workstream Leads and Deputies to the Steering Committee.</li>
+            <li>Escalate risks, slippage and safeguarding matters promptly — noting that safeguarding may also bypass this office entirely.</li>
+            <li>Approve spending up to £500 per commitment.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>Approves up to £500; cannot sign contracts (the MTÜ signs); cannot overrule the adjudication firewall or a safeguarding escalation.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> Steering Committee, through the Chair. <strong>Cadence:</strong> weekly delivery meeting; reports to every Steering meeting.</p>
+        </article>
+
+        <article class="role-card" id="card-k1">
+          <h3>Strategy &amp; Risk</h3>
+          <p class="rc-office">Steering seat · K1 office</p>
+          <h4>Purpose</h4>
+          <p>Keeps the project pointed at its milestones and honest about its risks, and keeps ETO West aligned with ETO East.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Maintain the milestone plan and track it against the four gates.</li>
+            <li>Own the risk register: identify, score, assign and review risks at every Steering meeting.</li>
+            <li>Coordinate East/West alignment with the ETO East counterpart in the Advisory Circle.</li>
+            <li>Prepare and run the gate reviews (outreach lock-down, programme lock, readiness, final ops).</li>
+            <li>Flag strategic drift — scope, dates, or commitments creeping beyond the approved envelope.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>Advisory and monitoring authority within the Steering Committee's vote; no separate spending authority beyond the committee's collective limit.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> Steering Committee. <strong>Cadence:</strong> reports at every Steering meeting; gate reviews December 2026, March, September and October 2027.</p>
+        </article>
+
+        <article class="role-card" id="card-k2">
+          <h3>Finance, Legal &amp; Contracts</h3>
+          <p class="rc-office">Steering seat · K2 office</p>
+          <h4>Purpose</h4>
+          <p>Guardian of the budget and of KBI's legal position. Every pound and every signature passes this office's scrutiny — though the signature itself is the MTÜ's.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Control the budget: track commitments against the envelope and the interim spending limits.</li>
+            <li>Run procurement proportionately — quotes, comparisons and records for significant purchases.</li>
+            <li>Arrange insurance appropriate to a residential international student event in the UK.</li>
+            <li>Draft, review and route every contract to the MTÜ for signature; keep the contract register.</li>
+            <li>Maintain the conflict-of-interest register; ensure conflicts are declared and minuted.</li>
+            <li>Advise the committee on the contracting-entity question for UK activity as arrangements are settled.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>Required member of the quorum for any money or contract decision. May block a commitment that lacks budget cover or a route to MTÜ signature; cannot sign contracts personally.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> Steering Committee; liaises with the MTÜ on all signatures. <strong>Cadence:</strong> budget report at every Steering meeting.</p>
+        </article>
+
+        <article class="role-card" id="card-k3">
+          <h3>Communications &amp; Community</h3>
+          <p class="rc-office">Steering seat · K3 office</p>
+          <h4>Purpose</h4>
+          <p>Owns how the event speaks — to participants, hosts, partners and the wider KBI community — so that everyone hears one consistent account.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Own participant communications: joining instructions, schedule changes, on-the-week announcements.</li>
+            <li>Set the announcement calendar and clear external statements with the Chair where they carry commitments.</li>
+            <li>Steward community and society relations, jointly with the K6 seat where host institutions are concerned.</li>
+            <li>Oversee the Communications &amp; Content workstream, including consent for photography.</li>
+            <li>Handle press and public enquiries, escalating sensitive matters to the Chair.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>May publish operational information within agreed lines; may not announce commitments, prices or partnerships that the Steering Committee has not approved.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> Steering Committee. <strong>Cadence:</strong> reports at every Steering meeting; daily comms rhythm during the event week.</p>
+        </article>
+
+        <article class="role-card" id="card-k5">
+          <h3>Programme &amp; Adjudication Integrity</h3>
+          <p class="rc-office">Steering seat · K5 office, supported by the K4 office</p>
+          <h4>Purpose</h4>
+          <p>Protects the credibility of ETO West 2027: its rules, its judging, its results and its appeals. This seat is the committee-side anchor of the adjudication firewall.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Own the ETO competition rules, judging criteria and scoring method for the Oxford week.</li>
+            <li>Constitute judging panels — drawing on Expert Council nominees and host experts — free of conflicts.</li>
+            <li>Guarantee results integrity: secure handling of scores, verification before announcement.</li>
+            <li>Run the appeals process, with published grounds, deadlines and decision-makers.</li>
+            <li>Shape the technical programme and site-visit content, with support from the K4 office on innovation and technology content.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>Independent of partnerships and sponsorship: no sponsor, host or partner may influence judging, results or appeals, and this seat must refuse and minute any such approach. No spending authority beyond the committee's collective limit.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> Steering Committee; adjudication decisions are final within the published appeals process. <strong>Cadence:</strong> reports at every Steering meeting; intensive during programme lock (March 2027) and the event week.</p>
+        </article>
+
+        <article class="role-card" id="card-k6">
+          <h3>Partnerships &amp; Hosts</h3>
+          <p class="rc-office">Steering seat · K6 office</p>
+          <h4>Purpose</h4>
+          <p>Builds the relationships the week depends on — host institutions, the venue, partner events and sponsors — inside the authority the committee has actually granted.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Lead outreach to host institutions, site-visit hosts and prospective partner events.</li>
+            <li>Negotiate venue and partner arrangements for Steering approval and MTÜ signature.</li>
+            <li>Oversee the Partnerships &amp; Sponsorship workstream and the sponsor pipeline.</li>
+            <li>Coordinate society relations jointly with the K3 seat.</li>
+            <li>Ensure no partner is promised exclusivity, visibility or access beyond the approved envelope.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>May negotiate; may not commit KBI beyond the Steering Committee's authority, sign anything, or have any contact with adjudication on the merits of any team or entry.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> Steering Committee. <strong>Cadence:</strong> outreach status at every Steering meeting; priority to the December 2026 outreach lock-down.</p>
+        </article>
+
+        <article class="role-card wide" id="card-delivery">
+          <h3>The Delivery Team (as a body)</h3>
+          <p class="rc-office">Delivery layer · 8 workstreams under the ERTW Director</p>
+          <h4>Purpose</h4>
+          <p>Executes what the Steering Committee decides. Each workstream is run by a Lead with a named Deputy, so that no function depends on a single person during a residential week with dozens of travelling students.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Deliver the workstream plans and budgets approved by the Steering Committee.</li>
+            <li>Report progress, risks and spend to the ERTW Director weekly.</li>
+            <li>Approve workstream spending up to £100 per commitment, within agreed budget lines.</li>
+            <li>Escalate early: safeguarding immediately, everything else through the Director.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>Operational authority within approved plans only. No workstream may sign contracts, vary the programme's adjudication arrangements, or commit KBI externally.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> ERTW Director. <strong>Cadence:</strong> weekly delivery meeting, chaired by the Director; daily during the event week.</p>
+        </article>
+
+        <article class="role-card" id="card-ws1">
+          <h3>Workstream 1 · Programme &amp; Site Visits</h3>
+          <p class="rc-office">Delivery · Lead + Deputy</p>
+          <h4>Purpose</h4>
+          <p>Turns the week's outline into a timed, briefed, walkable programme of sessions and site visits.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Build and maintain the day-by-day visit schedule for the week.</li>
+            <li>Brief every host: group size, timing, session aims, accessibility needs.</li>
+            <li>Confirm bookings, capacities and group-size limits with each venue and host.</li>
+            <li>Plan walking routes and timings between sites; hold wet-weather fallbacks.</li>
+            <li>Feed programme changes to Communications &amp; Content for participant updates.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>Spending to £100 per commitment within budget lines. Programme content with adjudication implications goes through the K5 seat.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> ERTW Director. <strong>Cadence:</strong> weekly delivery meeting.</p>
+        </article>
+
+        <article class="role-card" id="card-ws2">
+          <h3>Workstream 2 · ETO Competition Operations</h3>
+          <p class="rc-office">Delivery · Lead + Deputy · inside the adjudication firewall</p>
+          <h4>Purpose</h4>
+          <p>Runs the mechanics of ETO West 2027 — entries, exhibition, pitching and judges' operations — to the rules set by the K5 seat.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Manage team entries, eligibility checks and the competition timetable.</li>
+            <li>Run Exhibition Day and Pitch Day logistics: rooms, order of play, equipment, timing.</li>
+            <li>Operate judges' logistics: panel scheduling, score collection, secure handling of results.</li>
+            <li>Administer the appeals timetable as directed by the K5 seat.</li>
+            <li>Keep competition operations strictly separate from sponsors and hosts.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>Spending to £100. No discretion over rules, judging or results — those belong to the K5 seat; no sponsor or host contact on the merits of any entry.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> ERTW Director; on rules and integrity, to the Programme &amp; Adjudication Integrity seat. <strong>Cadence:</strong> weekly; daily during the event week.</p>
+        </article>
+
+        <article class="role-card" id="card-ws3">
+          <h3>Workstream 3 · Oxford Logistics</h3>
+          <p class="rc-office">Delivery · Lead + Deputy</p>
+          <h4>Purpose</h4>
+          <p>The physical week: venue, beds, food and movement, arranged so participants can simply be where they need to be.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Run venue operations at the ETO venue (Oxford Edge) and any satellite rooms.</li>
+            <li>Book and manage accommodation for participants and chaperones.</li>
+            <li>Arrange catering, including dietary requirements collected in advance.</li>
+            <li>Plan local transport, defaulting to walking; arrange alternatives where distance or accessibility requires.</li>
+            <li>Ensure accessibility needs are identified early and met in venue and route choices.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>Spending to £100 per commitment; bookings above that follow the approval ladder, and all contracts go to the MTÜ for signature.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> ERTW Director. <strong>Cadence:</strong> weekly; on-site throughout the event week.</p>
+        </article>
+
+        <article class="role-card" id="card-ws4">
+          <h3>Workstream 4 · Participant Care &amp; Safeguarding</h3>
+          <p class="rc-office">Delivery · Lead + Deputy · includes the Safeguarding Lead function</p>
+          <h4>Purpose</h4>
+          <p>Looks after the people: students and chaperones travelling internationally, many of them young, for a residential week. This workstream houses the event's named Safeguarding Lead and deputy.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Maintain the safeguarding policy for Steering approval and Board ratification; brief all staff and volunteers on it.</li>
+            <li>Set and monitor chaperone ratios and supervision arrangements.</li>
+            <li>Collect and safeguard medical, dietary, emergency-contact and travel information, on a strict need-to-know basis.</li>
+            <li>Publish and enforce codes of conduct for participants, chaperones and staff.</li>
+            <li>Run incident response: record, act, escalate — with a direct line to the Chair that bypasses the ERTW Director.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>The Safeguarding Lead may halt any activity on welfare grounds, pending Steering review, and may escalate directly to the Chair at any time. Spending to £100, with welfare-critical spend escalated immediately rather than delayed.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> ERTW Director for operations; Steering Committee Chair, directly and without intermediary, for safeguarding escalation. <strong>Cadence:</strong> weekly; continuously on duty during the event week.</p>
+        </article>
+
+        <article class="role-card" id="card-ws5">
+          <h3>Workstream 5 · Partnerships &amp; Sponsorship</h3>
+          <p class="rc-office">Delivery · Lead + Deputy · outside the adjudication firewall</p>
+          <h4>Purpose</h4>
+          <p>Works the sponsor and partner pipeline day to day, under the direction of the K6 Steering seat.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Research, approach and track prospective sponsors and partners.</li>
+            <li>Prepare sponsorship materials strictly within the approved offer and envelope.</li>
+            <li>Service confirmed sponsors: agreed visibility, hospitality and reporting.</li>
+            <li>Log every commitment offered or made, for the K2 seat's contract register.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>Spending to £100. May not promise exclusivity or benefits beyond the approved envelope, and may have <strong>no contact with adjudication on the merits</strong> of any team, entry or result.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> ERTW Director; functionally to the Partnerships &amp; Hosts (K6) seat. <strong>Cadence:</strong> weekly delivery meeting.</p>
+        </article>
+
+        <article class="role-card" id="card-ws6">
+          <h3>Workstream 6 · Finance &amp; Administration</h3>
+          <p class="rc-office">Delivery · Lead + Deputy</p>
+          <h4>Purpose</h4>
+          <p>The paper trail: payments processed, receipts kept, and the budget position always knowable at a glance.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Process payments and reimbursements once properly approved and, where a contract exists, signed by the MTÜ.</li>
+            <li>Track actuals against budget lines; flag variances to the K2 seat early.</li>
+            <li>Keep receipts, invoices and approval records complete and retrievable.</li>
+            <li>Administer registrations, lists and routine correspondence for the committee.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>Executes; does not approve its own spending beyond the £100 workstream limit, and does not vary approval decisions. Transaction arrangements themselves are <span class="tbd">TO BE DECIDED</span>.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> ERTW Director; functionally to the Finance, Legal &amp; Contracts (K2) seat. <strong>Cadence:</strong> weekly; budget pack for every Steering meeting.</p>
+        </article>
+
+        <article class="role-card" id="card-ws7">
+          <h3>Workstream 7 · Communications &amp; Content</h3>
+          <p class="rc-office">Delivery · Lead + Deputy</p>
+          <h4>Purpose</h4>
+          <p>Produces the event's public and participant-facing material, under the K3 seat's direction.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Maintain the event pages and artefacts: itinerary, committee and information pages.</li>
+            <li>Produce announcements, schedules and participant information packs.</li>
+            <li>Manage photography and recording consent for all participants, with opt-outs honoured in practice.</li>
+            <li>Support press activity and capture the week's record for KBI's archive.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>Spending to £100. Publishes operational information within the K3 seat's agreed lines; announcements carrying commitments need Steering approval first.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> ERTW Director; functionally to the Communications &amp; Community (K3) seat. <strong>Cadence:</strong> weekly; daily publishing rhythm during the event week.</p>
+        </article>
+
+        <article class="role-card" id="card-ws8">
+          <h3>Workstream 8 · Society &amp; Volunteer Liaison</h3>
+          <p class="rc-office">Delivery · Lead + Deputy</p>
+          <h4>Purpose</h4>
+          <p>The human bridge to Oxford's student societies and to the volunteers who will help run the week.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Liaise with OxCyS, OxAI and the Oxford Blockchain Society while their involvement remains unconfirmed, keeping expectations accurate on both sides.</li>
+            <li>Channel society input into the Advisory Circle and the four gate reviews.</li>
+            <li>Recruit, brief and roster volunteers for the event week.</li>
+            <li>Ensure volunteers are covered by the safeguarding policy and codes of conduct.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>Spending to £100. May not offer societies voting seats, co-organizer status or programme commitments — those are Steering decisions, and the voting question remains open (Decision 3).</p>
+          <p class="rc-foot"><strong>Reports to:</strong> ERTW Director. <strong>Cadence:</strong> weekly delivery meeting.</p>
+        </article>
+
+        <article class="role-card wide" id="card-advisory">
+          <h3>The Advisory Circle</h3>
+          <p class="rc-office">Advisory layer · non-voting</p>
+          <h4>Purpose</h4>
+          <p>Brings Oxford knowledge, subject expertise and East/West perspective into the committee's decisions — without holding any of its authority. Membership: Oxford host institutions and venue contacts; Oxford student societies (OxCyS, OxAI, Oxford Blockchain Society — none confirmed as co-organizer); nominees of the KBI Expert Councils; and the ETO East counterpart.</p>
+          <h4>Responsibilities</h4>
+          <ul>
+            <li>Advise at the four gates: outreach lock-down (December 2026), programme lock (March 2027), readiness review (September 2027), and final ops review (October 2027).</li>
+            <li>Give local and specialist advice between gates when the Steering Committee asks for it.</li>
+            <li>Expert Council nominees may serve as adjudicators under the K5 seat's rules.</li>
+            <li>Declare interests openly, especially where advice touches their own institutions.</li>
+          </ul>
+          <h4>Authority &amp; limits</h4>
+          <p>None, formally: no votes, no spending authority, and no authority to commit KBI in any way. Advice is received, minuted, and either adopted or set aside by the Steering Committee with reasons recorded.</p>
+          <p class="rc-foot"><strong>Reports to:</strong> the Steering Committee, as a body. <strong>Cadence:</strong> the four gate reviews; otherwise by invitation.</p>
+        </article>
+      </div>
+
+      <!-- ================= 4. WORKING RULES ================= -->
+      <h2 class="section-title">4 · Working Rules</h2>
+      <p class="section-intro">How the committee runs itself between now and November 2027.</p>
+
+      <section class="rules" aria-label="Working rules">
+        <ul>
+          <li><strong>Quorum.</strong> Five of the seven Steering seats, and for any decision involving money or contracts the Finance, Legal &amp; Contracts (K2) seat must be among them.</li>
+          <li><strong>One person, one vote.</strong> Each seat carries one vote regardless of how many functions its holder also performs elsewhere in the structure. Advisory Circle members do not vote.</li>
+          <li><strong>Decision log.</strong> Every decision is recorded in a written decision log within 24 hours, with the decision, the mover, the vote and any dissent noted.</li>
+          <li><strong>Conflicts of interest.</strong> Conflicts are declared at the start of the relevant item, recorded in the K2 seat's register, and minuted; a conflicted member takes no part in that decision. Approaches from sponsors or hosts touching adjudication are declared to the K5 seat and minuted, whoever receives them.</li>
+          <li><strong>Spending.</strong> The interim ladder in Decision 4 applies — £100 / £500 / £1,000 / Board — and every contract, at every level, is signed by the MTÜ and no one else.</li>
+          <li><strong>Safeguarding escalation.</strong> The Safeguarding Lead's direct line to the Chair bypasses the ERTW Director and may be used at any time, without notice and without needing to justify the bypass itself.</li>
+          <li><strong>Vacancies.</strong> The ERTW Director office is vacant pending appointment (Decision 1). Until then, Steering decisions are carried by the Chair, and no delivery-layer commitment above £100 should be made except by Steering decision.</li>
+        </ul>
+        <h3 style="margin:20px 0 4px; font-size:18px;">Meeting cadence</h3>
+        <table class="cadence-table">
+          <thead><tr><th scope="col">Body</th><th scope="col">Period</th><th scope="col">Frequency</th></tr></thead>
+          <tbody>
+            <tr><td rowspan="5">Steering Committee</td><td>To December 2026</td><td>Fortnightly</td></tr>
+            <tr><td>January – June 2027</td><td>Monthly</td></tr>
+            <tr><td>July – September 2027</td><td>Fortnightly</td></tr>
+            <tr><td>October – November 2027</td><td>Weekly</td></tr>
+            <tr><td>Event week, 8 – 14 November 2027</td><td>Daily</td></tr>
+            <tr><td>Delivery Team</td><td>Throughout</td><td>Weekly, chaired by the ERTW Director; daily during the event week</td></tr>
+            <tr><td>Advisory Circle</td><td>Gate reviews</td><td>December 2026 · March 2027 · September 2027 · October 2027</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <footer class="page-foot">
+        <p>ERTW'27 Oxford — Organizing Committee (proposed structure). Prepared for the Königsberger Bridges Institute. Roles are stated by office only; no individual is appointed to any role in this document. All ERTW contracts are signed by Königsberger Brückeninstitut MTÜ (Decision 2). Items marked <span class="tbd">TO BE DECIDED</span> remain open as of 30 October 2026.</p>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        "use strict";
+
+        var ROLES = {
+          "n-board": {
+            title: "KBI Board of Directors / Governance Council",
+            meta: "Oversight · context above the committee",
+            purpose: "The legal and governance authority above the Organizing Committee. It does not run the event; it ratifies the matters reserved to it and holds the committee to account.",
+            resp: ["Ratify the budget envelope and any commitment above £1,000", "Ratify the safeguarding policy", "Ratify anything touching adjudication outcomes or KBI's name and IP", "Receive the committee's gate-review outcomes"],
+            auth: "Full KBI authority, exercised through ratification. Day-to-day authority is delegated to the Steering Committee within the approved envelope.",
+            reports: "— (top of this structure)"
+          },
+          "n-chair": {
+            title: "Chair",
+            meta: "Steering Committee · voting seat 1 of 7",
+            purpose: "Leads the Steering Committee and carries its final accountability to the Board, while staying out of day-to-day delivery.",
+            resp: ["Chair Steering meetings and set agendas with the Director", "Own reserved matters and Board ratification", "Final escalation point for deadlocks and disputes", "Endpoint of the safeguarding bypass"],
+            auth: "No unilateral spending beyond the Steering Committee's collective £1,000 limit; cannot sign contracts (MTÜ only).",
+            reports: "Board of Directors / Governance Council"
+          },
+          "n-director": {
+            title: "ERTW Director / Vice-Chair",
+            meta: "Steering Committee · voting seat 2 of 7 · vacant",
+            purpose: "The single accountable day-to-day operator of ERTW'27 Oxford and head of the Delivery Team. Appointment to be decided soon — the office is currently vacant.",
+            resp: ["Own the master plan, milestones and critical path", "Coordinate all eight workstreams", "Maintain the decision log (entries within 24 hours)", "Recommend workstream Leads and Deputies"],
+            auth: "Approves spending up to £500 per commitment. Cannot sign contracts (MTÜ signs) and cannot overrule the adjudication firewall or a safeguarding escalation.",
+            reports: "Steering Committee, through the Chair"
+          },
+          "n-k1": {
+            title: "Strategy & Risk",
+            meta: "Steering Committee · K1 office · voting seat",
+            purpose: "Keeps the project on its milestones, honest about its risks, and aligned between ETO East and ETO West.",
+            resp: ["Maintain the milestone plan against the four gates", "Own the risk register, reviewed at every Steering meeting", "Coordinate East/West alignment", "Prepare and run the gate reviews"],
+            auth: "Monitoring and advisory authority within the committee's vote; no separate spending limit.",
+            reports: "Steering Committee"
+          },
+          "n-k2": {
+            title: "Finance, Legal & Contracts",
+            meta: "Steering Committee · K2 office · voting seat",
+            purpose: "Guardian of the budget and of KBI's legal position — every pound and every signature passes this office's scrutiny.",
+            resp: ["Control the budget against the envelope and interim limits", "Run procurement and keep its records", "Arrange insurance for a residential international student event", "Draft, review and route all contracts to the MTÜ for signature; keep the contract and conflict-of-interest registers"],
+            auth: "Required in the quorum for any money or contract decision; may block a commitment lacking budget cover or a route to MTÜ signature. Cannot sign contracts personally.",
+            reports: "Steering Committee; liaises with the MTÜ on signatures"
+          },
+          "n-k3": {
+            title: "Communications & Community",
+            meta: "Steering Committee · K3 office · voting seat",
+            purpose: "Owns how the event speaks — to participants, hosts, partners and the wider KBI community.",
+            resp: ["Own participant and host communications", "Set the announcement calendar", "Steward community and society relations jointly with K6", "Oversee Communications & Content, including photography consent"],
+            auth: "May publish operational information within agreed lines; may not announce unapproved commitments, prices or partnerships.",
+            reports: "Steering Committee"
+          },
+          "n-k5": {
+            title: "Programme & Adjudication Integrity",
+            meta: "Steering Committee · K5 office, supported by K4 · voting seat",
+            purpose: "Protects the credibility of ETO West 2027 — its rules, judging, results and appeals — as the committee-side anchor of the adjudication firewall.",
+            resp: ["Own ETO rules, judging criteria and scoring method", "Constitute conflict-free judging panels", "Guarantee results integrity before announcement", "Run the appeals process"],
+            auth: "Independent of partnerships and sponsorship: must refuse and minute any approach seeking to influence judging, results or appeals.",
+            reports: "Steering Committee; adjudication decisions final within the published appeals process"
+          },
+          "n-k6": {
+            title: "Partnerships & Hosts",
+            meta: "Steering Committee · K6 office · voting seat",
+            purpose: "Builds the relationships the week depends on — hosts, venue, partner events and sponsors — within the authority actually granted.",
+            resp: ["Lead outreach to host institutions and partner events", "Negotiate venue and partner terms for Steering approval and MTÜ signature", "Oversee the Partnerships & Sponsorship workstream", "Coordinate society relations jointly with K3"],
+            auth: "May negotiate; may not commit KBI beyond Steering authority, sign anything, or touch adjudication on the merits.",
+            reports: "Steering Committee"
+          },
+          "n-ws1": {
+            title: "Workstream 1 · Programme & Site Visits",
+            meta: "Delivery Team · Lead + Deputy",
+            purpose: "Turns the week's outline into a timed, briefed, walkable programme of sessions and site visits.",
+            resp: ["Build the day-by-day visit schedule", "Brief every host on group size, timing and aims", "Confirm bookings and capacity limits", "Plan walking routes and wet-weather fallbacks"],
+            auth: "Spending up to £100 per commitment within budget lines.",
+            reports: "ERTW Director"
+          },
+          "n-ws2": {
+            title: "Workstream 2 · ETO Competition Operations",
+            meta: "Delivery Team · Lead + Deputy · inside the firewall",
+            purpose: "Runs the mechanics of ETO West 2027 — entries, exhibition, pitching and judges' operations — to the rules set by the K5 seat.",
+            resp: ["Manage entries, eligibility and the competition timetable", "Run Exhibition Day and Pitch Day logistics", "Operate judges' scheduling and secure score handling", "Administer the appeals timetable as directed by K5"],
+            auth: "Spending up to £100. No discretion over rules, judging or results; no sponsor or host contact on the merits of any entry.",
+            reports: "ERTW Director; on rules and integrity, the K5 seat"
+          },
+          "n-ws3": {
+            title: "Workstream 3 · Oxford Logistics",
+            meta: "Delivery Team · Lead + Deputy",
+            purpose: "The physical week: venue, beds, food and movement.",
+            resp: ["Run venue operations at Oxford Edge and satellite rooms", "Book and manage accommodation", "Arrange catering including dietary requirements", "Plan local transport, walking first, and accessibility provision"],
+            auth: "Spending up to £100 per commitment; larger bookings follow the approval ladder and MTÜ signature.",
+            reports: "ERTW Director"
+          },
+          "n-ws4": {
+            title: "Workstream 4 · Participant Care & Safeguarding",
+            meta: "Delivery Team · Lead + Deputy · holds the Safeguarding Lead",
+            purpose: "Looks after the people — students and chaperones travelling internationally for a residential week — and houses the named Safeguarding Lead and deputy.",
+            resp: ["Maintain the safeguarding policy and brief all staff and volunteers", "Set and monitor chaperone ratios", "Hold medical, dietary, emergency-contact and travel information on a need-to-know basis", "Publish codes of conduct and run incident response"],
+            auth: "The Safeguarding Lead may halt any activity on welfare grounds and may escalate directly to the Chair, bypassing the Director, at any time.",
+            reports: "ERTW Director for operations; the Chair directly for safeguarding escalation"
+          },
+          "n-ws5": {
+            title: "Workstream 5 · Partnerships & Sponsorship",
+            meta: "Delivery Team · Lead + Deputy · outside the firewall",
+            purpose: "Works the sponsor and partner pipeline day to day, under the K6 Steering seat.",
+            resp: ["Research, approach and track sponsors and partners", "Prepare sponsorship materials within the approved offer", "Service confirmed sponsors", "Log every commitment for the K2 contract register"],
+            auth: "Spending up to £100. No exclusivity or benefits beyond the approved envelope; no contact with adjudication on the merits.",
+            reports: "ERTW Director; functionally the K6 seat"
+          },
+          "n-ws6": {
+            title: "Workstream 6 · Finance & Administration",
+            meta: "Delivery Team · Lead + Deputy",
+            purpose: "The paper trail: payments processed, receipts kept, and the budget position always knowable.",
+            resp: ["Process payments and reimbursements once approved and, where applicable, MTÜ-signed", "Track actuals against budget lines and flag variances early", "Keep receipts, invoices and approvals retrievable", "Administer registrations and routine correspondence"],
+            auth: "Executes rather than approves; no self-approval beyond the £100 workstream limit. Transaction arrangements are to be decided.",
+            reports: "ERTW Director; functionally the K2 seat"
+          },
+          "n-ws7": {
+            title: "Workstream 7 · Communications & Content",
+            meta: "Delivery Team · Lead + Deputy",
+            purpose: "Produces the event's public and participant-facing material under the K3 seat's direction.",
+            resp: ["Maintain event pages and artefacts", "Produce announcements, schedules and information packs", "Manage photography and recording consent, honouring opt-outs", "Support press activity and archive the week's record"],
+            auth: "Spending up to £100; publishes within K3's agreed lines only.",
+            reports: "ERTW Director; functionally the K3 seat"
+          },
+          "n-ws8": {
+            title: "Workstream 8 · Society & Volunteer Liaison",
+            meta: "Delivery Team · Lead + Deputy",
+            purpose: "The human bridge to Oxford's student societies and to the week's volunteers.",
+            resp: ["Liaise with OxCyS, OxAI and the Oxford Blockchain Society while involvement is unconfirmed", "Channel society input into the Advisory Circle and gate reviews", "Recruit, brief and roster volunteers", "Ensure volunteers are covered by safeguarding policy and conduct codes"],
+            auth: "Spending up to £100. May not offer voting seats, co-organizer status or programme commitments — those are Steering decisions.",
+            reports: "ERTW Director"
+          },
+          "n-adv1": {
+            title: "Advisory Circle · Oxford Host Institutions & Venue Contacts",
+            meta: "Advisory Circle · non-voting",
+            purpose: "Local knowledge from the institutions and venues hosting sessions during the week.",
+            resp: ["Advise at the four gate reviews", "Give specialist local advice when asked", "Declare interests touching their own institutions"],
+            auth: "No votes, no spending authority, no power to commit KBI.",
+            reports: "Steering Committee, as a body"
+          },
+          "n-adv2": {
+            title: "Advisory Circle · Oxford Student Societies",
+            meta: "Advisory Circle · non-voting · none confirmed",
+            purpose: "OxCyS, OxAI and the Oxford Blockchain Society — prospective partners whose involvement is not yet confirmed. They advise; whether they would ever hold voting seats on this committee is the open question recorded in Decision 3.",
+            resp: ["Advise at the four gate reviews", "Contribute student-community perspective", "Liaise day to day through Workstream 8"],
+            auth: "No votes, no spending authority, no power to commit KBI.",
+            reports: "Steering Committee, as a body"
+          },
+          "n-adv3": {
+            title: "Advisory Circle · KBI Expert Council Nominees",
+            meta: "Advisory Circle · non-voting",
+            purpose: "Subject-matter experts nominated by the KBI Expert Councils — separate expert networks that hold no vote on this committee.",
+            resp: ["Advise at the four gate reviews", "Serve as adjudicators under the K5 seat's rules where appointed", "Declare interests openly"],
+            auth: "No votes, no spending authority, no power to commit KBI.",
+            reports: "Steering Committee, as a body"
+          },
+          "n-adv4": {
+            title: "Advisory Circle · ETO East Counterpart",
+            meta: "Advisory Circle · non-voting",
+            purpose: "The Eastern Conference counterpart, keeping ETO East and ETO West aligned in format, standards and calendar.",
+            resp: ["Advise at the four gate reviews", "Coordinate alignment through the K1 seat", "Share Eastern Conference practice and lessons"],
+            auth: "No votes, no spending authority, no power to commit KBI.",
+            reports: "Steering Committee, as a body"
+          }
+        };
+
+        // Reporting edges: [fromId, toId, kind]  kind: "solid" | "dashed" (bypass) | "firewall"
+        var EDGES = [
+          ["n-board", "n-chair", "solid"],
+          ["n-chair", "n-director", "solid"],
+          ["n-director", "n-ws1", "solid"],
+          ["n-director", "n-ws2", "solid"],
+          ["n-director", "n-ws3", "solid"],
+          ["n-director", "n-ws4", "solid"],
+          ["n-director", "n-ws5", "solid"],
+          ["n-director", "n-ws6", "solid"],
+          ["n-director", "n-ws7", "solid"],
+          ["n-director", "n-ws8", "solid"],
+          ["n-ws4", "n-chair", "dashed"],
+          ["n-ws2", "n-ws5", "firewall"],
+          ["n-adv1", "n-chair", "advisory"],
+          ["n-adv3", "n-k5", "advisory"]
+        ];
+
+        var chart = document.getElementById("chart");
+        var svg = document.getElementById("wires");
+        var nodes = Array.prototype.slice.call(chart.querySelectorAll(".node"));
+        var nodeById = {};
+        nodes.forEach(function (n) { nodeById[n.id] = n; });
+        var activeId = null;
+        var wsCollapsed = false;
+
+        function isVisible(el) {
+          return el && !el.classList.contains("hidden-node") && el.offsetParent !== null || (el && el.getClientRects().length > 0 && !el.classList.contains("hidden-node"));
+        }
+
+        function elbow(x1, y1, x2, y2) {
+          var my = y1 + (y2 - y1) / 2;
+          return "M" + x1 + "," + y1 + " L" + x1 + "," + my + " L" + x2 + "," + my + " L" + x2 + "," + y2;
+        }
+
+        function drawWires(litSet) {
+          var crect = chart.getBoundingClientRect();
+          svg.setAttribute("viewBox", "0 0 " + chart.scrollWidth + " " + chart.scrollHeight);
+          svg.setAttribute("width", chart.scrollWidth);
+          svg.setAttribute("height", chart.scrollHeight);
+          var html = "";
+          EDGES.forEach(function (e) {
+            var a = nodeById[e[0]], b = nodeById[e[1]], kind = e[2];
+            if (!a || !b) return;
+            if (a.classList.contains("hidden-node") || b.classList.contains("hidden-node")) return;
+            if (wsCollapsed && (e[0].indexOf("n-ws") === 0 || e[1].indexOf("n-ws") === 0)) return;
+            var ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+            var ax = ra.left - crect.left + ra.width / 2, ay = ra.top - crect.top;
+            var bx = rb.left - crect.left + rb.width / 2, by = rb.top - crect.top;
+            var d;
+            var cls = "";
+            if (kind === "dashed") {
+              // Safeguarding bypass: from top of WS4 up the left side to the Chair.
+              var aTop = ay, bBottom = rb.top - crect.top + rb.height;
+              var leftX = Math.max(4, Math.min(ra.left - crect.left, rb.left - crect.left) - 14);
+              d = "M" + ax + "," + aTop + " L" + leftX + "," + aTop + " L" + leftX + "," + bBottom + " L" + bx + "," + bBottom;
+              cls = "dashed";
+            } else if (kind === "firewall") {
+              // Dotted route below the two workstream boxes.
+              var yBot = Math.max(ra.top - crect.top + ra.height, rb.top - crect.top + rb.height) + 16;
+              d = "M" + ax + "," + (ra.top - crect.top + ra.height) + " L" + ax + "," + yBot + " L" + bx + "," + yBot + " L" + bx + "," + (rb.top - crect.top + rb.height);
+              cls = "firewall";
+            } else if (kind === "advisory") {
+              // Advisory feeds upward: from top of advisory node to bottom of target.
+              var aTopY = ay, bBotY = rb.top - crect.top + rb.height;
+              d = elbow(ax, aTopY, bx, bBotY);
+              cls = "dashed";
+              // advisory lines use neutral dashed styling, not the red bypass colour:
+              html += '<path class="adv' + (litSet && litSet[e[0] + "|" + e[1]] ? " lit" : "") + '" style="stroke-dasharray:5 5;" d="' + d + '"/>';
+              return;
+            } else {
+              // Normal reporting: parent bottom -> child top.
+              var aBotY = ra.top - crect.top + ra.height;
+              d = elbow(ax, aBotY, bx, by);
+            }
+            var lit = litSet && litSet[e[0] + "|" + e[1]];
+            html += '<path class="' + cls + (lit ? " lit" : "") + '" d="' + d + '"/>';
+          });
+          svg.innerHTML = html;
+        }
+
+        function relatedSet(id) {
+          // ancestors + descendants through solid/dashed reporting edges (not advisory/firewall)
+          var up = {}, down = {}, litEdges = {};
+          function walk(start, dir) {
+            var seen = {};
+            var pushed = {};
+            var stack = [start];
+            pushed[start] = true;
+            while (stack.length) {
+              var cur = stack.pop();
+              EDGES.forEach(function (e) {
+                if (e[2] !== "solid" && e[2] !== "dashed") return;
+                var from = dir === "up" ? e[1] : e[0];
+                var to = dir === "up" ? e[0] : e[1];
+                if (from === cur && !seen[to]) {
+                  seen[to] = true;
+                  litEdges[e[0] + "|" + e[1]] = true;
+                  // A dashed (bypass) edge lights its endpoint but is not
+                  // traversed further — it is an escalation route, not a
+                  // reporting line, so it must not pull in the whole chain.
+                  if (e[2] === "solid" && !pushed[to]) { pushed[to] = true; stack.push(to); }
+                }
+              });
+            }
+            return seen;
+          }
+          var a = walk(id, "up"), d = walk(id, "down");
+          Object.keys(a).forEach(function (k) { up[k] = true; });
+          Object.keys(d).forEach(function (k) { down[k] = true; });
+          return { nodes: Object.assign({}, up, down), edges: litEdges };
+        }
+
+        function selectNode(id, scrollCard) {
+          activeId = id;
+          var rel = relatedSet(id);
+          nodes.forEach(function (n) {
+            n.classList.remove("active", "lit", "dim");
+            if (n.id === id) n.classList.add("active");
+            else if (rel.nodes[n.id]) n.classList.add("lit");
+            else n.classList.add("dim");
+          });
+          var r = ROLES[id];
+          if (r) {
+            document.getElementById("dpTitle").textContent = r.title;
+            document.querySelector("#detailPanel .dp-meta").textContent = r.meta;
+            document.getElementById("dpPurpose").textContent = r.purpose;
+            document.getElementById("dpResp").innerHTML = r.resp.map(function (x) { return "<li>" + x + "</li>"; }).join("");
+            document.getElementById("dpAuth").textContent = r.auth;
+            document.getElementById("dpReports").textContent = r.reports;
+          }
+          drawWires(rel.edges);
+          if (scrollCard) {
+            var cardId = nodeById[id].getAttribute("data-card");
+            var card = cardId && document.getElementById(cardId);
+            if (card) {
+              document.querySelectorAll(".role-card.from-chart").forEach(function (c) { c.classList.remove("from-chart"); });
+              card.classList.add("from-chart");
+            }
+          }
+        }
+
+        function resetView() {
+          activeId = null;
+          nodes.forEach(function (n) { n.classList.remove("active", "lit", "dim"); });
+          document.querySelectorAll(".role-card.from-chart").forEach(function (c) { c.classList.remove("from-chart"); });
+          drawWires(null);
+        }
+
+        nodes.forEach(function (n) {
+          n.addEventListener("click", function () { selectNode(n.id, false); });
+          n.addEventListener("dblclick", function () { selectNode(n.id, true); });
+        });
+        // "See full description" — single click also links out via a small affordance: pressing Enter on a focused node scrolls to its card.
+        nodes.forEach(function (n) {
+          n.addEventListener("keydown", function (ev) {
+            if (ev.key === "Enter") { ev.preventDefault(); selectNode(n.id, true); var cid = n.getAttribute("data-card"); var card = cid && document.getElementById(cid); if (card) card.scrollIntoView({ behavior: "smooth", block: "start" }); }
+          });
+        });
+
+        // Layer filters
+        var filterBtns = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
+        filterBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            filterBtns.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+            btn.setAttribute("aria-pressed", "true");
+            var f = btn.getAttribute("data-filter");
+            resetView();
+            nodes.forEach(function (n) {
+              n.classList.remove("dim");
+              if (f === "all") return;
+              var layers = (n.getAttribute("data-layer") || "").split(" ");
+              var match = layers.indexOf(f) >= 0 || (f === "delivery" && layers.indexOf("delivery-head") >= 0);
+              if (!match) n.classList.add("dim");
+            });
+            drawWires(null);
+          });
+        });
+
+        // Expand / collapse workstreams
+        var wsToggle = document.getElementById("wsToggle");
+        wsToggle.addEventListener("click", function () {
+          wsCollapsed = !wsCollapsed;
+          wsToggle.textContent = wsCollapsed ? "Expand" : "Collapse";
+          wsToggle.setAttribute("aria-expanded", String(!wsCollapsed));
+          document.getElementById("wsTier").style.display = wsCollapsed ? "none" : "";
+          requestAnimationFrame(function () { drawWires(activeId ? relatedSet(activeId).edges : null); });
+        });
+
+        document.getElementById("resetBtn").addEventListener("click", function () {
+          filterBtns.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-filter") === "all" ? "true" : "false"); });
+          resetView();
+        });
+
+        var redrawTimer = null;
+        window.addEventListener("resize", function () {
+          clearTimeout(redrawTimer);
+          redrawTimer = setTimeout(function () { drawWires(activeId ? relatedSet(activeId).edges : null); }, 120);
+        });
+        window.addEventListener("load", function () { drawWires(null); });
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { drawWires(null); });
+        drawWires(null);
+      })();
+    </script>
+  <div id="kbi-gate" role="dialog" aria-label="Password required">
+<div class="card">
+<h1>ERTW'27 Oxford — Organizing Committee</h1>
+<p>This document is password-protected. Please enter the password to continue.</p>
+<form id="kbi-gate-form">
+<input type="password" id="kbi-gate-input" placeholder="Password" autocomplete="current-password" autofocus>
+<button type="submit">Unlock</button>
+<div class="err" id="kbi-gate-err"></div>
+</form>
+</div>
+</div>
+<script>
+(function(){
+var H="82bf4ad3ad68057967d8e26db16a9c3994bd648ca7cde3d77a0fd82f52fb0241";
+try{ if(sessionStorage.getItem("kbiGateOk")===H){var g=document.getElementById("kbi-gate"); if(g) g.style.display="none"; return;} }catch(e){}
+async function sha256(t){var b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("");}
+document.getElementById("kbi-gate-form").addEventListener("submit",async function(ev){
+ev.preventDefault();
+var v=document.getElementById("kbi-gate-input").value;
+var h=await sha256(v);
+if(h===H){ try{sessionStorage.setItem("kbiGateOk",H);}catch(e){} document.getElementById("kbi-gate").style.display="none"; }
+else{ document.getElementById("kbi-gate-err").textContent="Incorrect password — please try again."; }
+});
+})();
+</script>
+</body>
+</html>
